@@ -3,4 +3,5 @@ flask
 haversine
 requests
 flask_sqlalchemy
+flask_cors
 json

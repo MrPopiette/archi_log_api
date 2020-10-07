@@ -1,5 +1,6 @@
-from flask import Flask, render_template, flash, request, redirect, url_for, jsonify
+from flask import Flask, render_template, flash, request, redirect, url_for, jsonify, Response
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 import haversine as hs
 import requests
 import json
@@ -7,7 +8,7 @@ import json
 
 # create the object of Flask
 app = Flask(__name__)
-
+CORS(app)
 app.config['SECRET_KEY'] = 'hardsecretkey'
 
 
