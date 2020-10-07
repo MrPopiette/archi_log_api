@@ -70,4 +70,5 @@ def Distance():
 
 # run flask app
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='localhost', port=10071, debug=True)
+
