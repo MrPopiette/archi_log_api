@@ -46,7 +46,7 @@ def Home():
 # distance route test
 @app.route('/distance', methods=['GET', 'POST'])
 def Distance():
-    resp = requests.get('https://run.mocky.io/v3/eaf95a7c-3ff2-4d4b-ac6a-6e3341c1fee8')
+    resp = requests.get('http://api.aws.cbarange.ovh/')
     user = UserInfo(float(request.args.get('latitude')), float(request.args.get('longitude')))
     distance = {}
     truck = {}
