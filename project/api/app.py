@@ -47,7 +47,9 @@ def Home():
 def Distance():
     resp = requests.get('https://run.mocky.io/v3/eaf95a7c-3ff2-4d4b-ac6a-6e3341c1fee8')
     user = UserInfo(float(request.args.get('latitude')), float(request.args.get('longitude')))
-    distance = []
+    distance = {}
+    truck = {}
+    compteur = 0
     userLoc = (user.latitude, user.longitude)
     if resp.status_code != 200:
         # This means something went wrong.
@@ -55,7 +57,13 @@ def Distance():
     for todo_item in resp.json():
         print('{} {} {}'.format(todo_item['id'], todo_item['latitude'], todo_item['longitude']))
         loc=(todo_item['latitude'], todo_item['longitude'])
-        distance.append(hs.haversine(loc,userLoc))
+        truck = {
+            "id_truck" : todo_item['id'],
+            "url": todo_item['url'],
+            "pos": hs.haversine(loc,userLoc)
+        }
+        distance[compteur] = truck
+        compteur = compteur + 1
 
     return json.dumps(distance)
 
