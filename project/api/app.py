@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, request, redirect, url_for
+from flask import Flask, render_template, flash, request, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import haversine as hs
 import requests
@@ -57,15 +57,15 @@ def Distance():
     for todo_item in resp.json():
         print('{} {} {}'.format(todo_item['id'], todo_item['latitude'], todo_item['longitude']))
         loc=(todo_item['latitude'], todo_item['longitude'])
-        truck = {
+        truck = [{
             "id_truck" : todo_item['id'],
             "url": todo_item['url'],
             "distance": hs.haversine(loc,userLoc)
-        }
+        }]
         distance[compteur] = truck
         compteur = compteur + 1
 
-    return json.dumps(distance)
+    return jsonify(distance)
 
 # run flask app
 if __name__ == "__main__":
