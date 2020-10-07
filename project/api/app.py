@@ -60,7 +60,7 @@ def Distance():
         truck = {
             "id_truck" : todo_item['id'],
             "url": todo_item['url'],
-            "pos": hs.haversine(loc,userLoc)
+            "distance": hs.haversine(loc,userLoc)
         }
         distance[compteur] = truck
         compteur = compteur + 1
