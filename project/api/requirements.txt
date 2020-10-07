@@ -1,0 +1,6 @@
+# Flask
+flask
+haversine
+requests
+flask_sqlalchemy
+json
